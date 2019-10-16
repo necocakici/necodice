@@ -41,27 +41,47 @@ class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+      child: Column(
         children: <Widget>[
-          Expanded(
-            child: FlatButton(
-              onPressed: () {
-                leftDiceRandom();
-                rightDiceRandom();
-              },
-              child: Image.asset(
-                'images/dice$leftDiceNumber.png',
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: FlatButton(
+                  onPressed: () {
+                    leftDiceRandom();
+                    rightDiceRandom();
+                  },
+                  child: Image.asset(
+                    'images/dice$leftDiceNumber.png',
+                  ),
+                ),
               ),
-            ),
+              Expanded(
+                child: FlatButton(
+                  onPressed: () {
+                    leftDiceRandom();
+                    rightDiceRandom();
+                  },
+                  child: Image.asset(
+                    'images/dice$rightDiceNumber.png',
+                  ),
+                ),
+              ),
+            ],
           ),
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.all(28.0),
             child: FlatButton(
               onPressed: () {
                 leftDiceRandom();
                 rightDiceRandom();
               },
-              child: Image.asset(
-                'images/dice$rightDiceNumber.png',
+              child: Card(
+                color: Colors.red,
+                child: Text(
+                  'ZARLA!',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 34.0),
+                ),
               ),
             ),
           ),
