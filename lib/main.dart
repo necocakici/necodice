@@ -22,19 +22,13 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  List<int> diceNumber = [1, 2, 3, 4, 5, 6];
-  int leftDiceNumber = 1;
-  int rightDiceNumber = 3;
+  int leftDN = 1;
+  int rightDN = 1;
 
-  void leftDiceRandom() {
+  void zarla() {
     setState(() {
-      leftDiceNumber = diceNumber[new Random().nextInt(diceNumber.length)];
-    });
-  }
-
-  void rightDiceRandom() {
-    setState(() {
-      rightDiceNumber = diceNumber[new Random().nextInt(diceNumber.length)];
+      leftDN = Random().nextInt(6) + 1;
+      rightDN = Random().nextInt(6) + 1;
     });
   }
 
@@ -48,22 +42,24 @@ class _DicePageState extends State<DicePage> {
               Expanded(
                 child: FlatButton(
                   onPressed: () {
-                    leftDiceRandom();
-                    rightDiceRandom();
+                    setState(() {
+                      zarla();
+                    });
                   },
                   child: Image.asset(
-                    'images/dice$leftDiceNumber.png',
+                    'images/dice$leftDN.png',
                   ),
                 ),
               ),
               Expanded(
                 child: FlatButton(
                   onPressed: () {
-                    leftDiceRandom();
-                    rightDiceRandom();
+                    setState(() {
+                      zarla();
+                    });
                   },
                   child: Image.asset(
-                    'images/dice$rightDiceNumber.png',
+                    'images/dice$rightDN.png',
                   ),
                 ),
               ),
@@ -73,14 +69,16 @@ class _DicePageState extends State<DicePage> {
             padding: const EdgeInsets.all(28.0),
             child: FlatButton(
               onPressed: () {
-                leftDiceRandom();
-                rightDiceRandom();
+                zarla();
               },
               child: Card(
                 color: Colors.red,
                 child: Text(
                   'ZARLA!',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 34.0),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 34.0,
+                      color: Colors.white),
                 ),
               ),
             ),
